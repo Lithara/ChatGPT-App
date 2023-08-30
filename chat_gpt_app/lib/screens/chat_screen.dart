@@ -62,7 +62,7 @@ class _ChatScreenState extends State<ChatScreen> {
                 color: Colors.white,
                 size: 18.0,
               ),
-              SizedBox(height: 15,),
+              const SizedBox(height: 15,),
               Material(
                 color: cardColor,
                 child: Row(

@@ -1,5 +1,6 @@
 import 'package:chat_gpt_app/constants/constant.dart';
 import 'package:chat_gpt_app/services/assets_manager.dart';
+import 'package:chat_gpt_app/widgets/text_widget.dart';
 import 'package:flutter/material.dart';
 
 class ChatWidget extends StatelessWidget {
@@ -20,6 +21,12 @@ class ChatWidget extends StatelessWidget {
                   height: 30,
                   width: 30,
                 ),
+                const SizedBox(
+                  width: 8,
+                ),
+                const TextWidget(
+                  label: "Hello here's our message",
+                )
               ],
             ),
           ),
