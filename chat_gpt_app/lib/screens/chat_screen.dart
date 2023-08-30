@@ -54,27 +54,38 @@ class _ChatScreenState extends State<ChatScreen> {
                 color: Colors.white,
                 size: 18.0,
               ),
+              SizedBox(height: 15,),
               Material(
                 color: cardColor,
                 child: Row(
                   children: [
                     Expanded(
-                      child: TextField(
-                        style: const TextStyle(
-                          color: Colors.white
-                        ),
-                        controller: textEditingController,
-                        onSubmitted: (value){
-                          // TODO send message
-                        },
-                        decoration: const InputDecoration.collapsed(
-                          hintText: "How can I help you?",
-                          hintStyle: TextStyle(
-                            color: Colors.grey,
+                      child: Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: TextField(
+                          style: const TextStyle(
+                            color: Colors.white
+                          ),
+                          controller: textEditingController,
+                          onSubmitted: (value){
+                            // TODO send message
+                          },
+                          decoration: const InputDecoration.collapsed(
+                            hintText: "How can I help you?",
+                            hintStyle: TextStyle(
+                              color: Colors.grey,
+                            ),
                           ),
                         ),
                       ),
                     ),
+                    IconButton(
+                      onPressed: (){},
+                      icon: const Icon(
+                        Icons.send,
+                        color: Colors.white,
+                      ),
+                    )
                   ],
                 ),
               ),
