@@ -1,3 +1,4 @@
+import 'package:chat_gpt_app/constants/constant.dart';
 import 'package:flutter/material.dart';
 
 import '../services/assets_manager.dart';
@@ -16,7 +17,7 @@ class _ChatScreenState extends State<ChatScreen> {
   late TextEditingController textEditingController;
 
   @override
-  void intState(){
+  void initState(){
     textEditingController = TextEditingController();
     super.initState();
   }
@@ -53,18 +54,29 @@ class _ChatScreenState extends State<ChatScreen> {
                 color: Colors.white,
                 size: 18.0,
               ),
-              Row(
-                children: [
-                  Expanded(
-                    child: TextField(
-                      controller: textEditingController,
-                      onSubmitted: (value){
-                        // TODO send message
-                      },
-                      decoration: const InputDecoration.collapsed(hintText: "How can I help you?"),
+              Material(
+                color: cardColor,
+                child: Row(
+                  children: [
+                    Expanded(
+                      child: TextField(
+                        style: const TextStyle(
+                          color: Colors.white
+                        ),
+                        controller: textEditingController,
+                        onSubmitted: (value){
+                          // TODO send message
+                        },
+                        decoration: const InputDecoration.collapsed(
+                          hintText: "How can I help you?",
+                          hintStyle: TextStyle(
+                            color: Colors.grey,
+                          ),
+                        ),
+                      ),
                     ),
-                  ),
-                ],
+                  ],
+                ),
               ),
             ],
           ],
