@@ -4,8 +4,10 @@ import 'package:chat_gpt_app/widgets/text_widget.dart';
 import 'package:flutter/material.dart';
 
 class ChatWidget extends StatelessWidget {
-  const ChatWidget({super.key});
+  const ChatWidget({super.key, required this.msg, required this.chatIndex});
 
+  final String msg;
+  final int chatIndex;
   @override
   Widget build(BuildContext context) {
     return Column(
