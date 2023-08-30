@@ -13,22 +13,52 @@ class ChatWidget extends StatelessWidget {
     return Column(
       children: [
         Material(
-          color: cardColor,
+          color: chatIndex == 0 ? scaffoldBackgroundColor : cardColor,
           child: Padding(
             padding: const EdgeInsets.all(8.0),
             child: Row(
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Image.asset(
-                  AssetsManager.userImage,
-                  height: 30,
-                  width: 30,
+                  chatIndex == 0 ? AssetsManager.userImage : AssetsManager.botImage,
+                  height: 20,
+                  width: 20,
                 ),
                 const SizedBox(
                   width: 8,
                 ),
-                const TextWidget(
-                  label: "Hello here's our message",
-                )
+                Expanded(
+                  child: TextWidget(
+                    label: msg,
+                    fontSize: 15,
+                    fontWeight: FontWeight.normal,
+                  ),
+                  
+                ),
+                const SizedBox(
+                    width: 15,
+                  ),
+
+                chatIndex == 0 ? const SizedBox.shrink() 
+                : const Row(
+                  mainAxisAlignment: MainAxisAlignment.end,
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    Icon(
+                      Icons.thumb_up_alt_outlined,
+                      color: Colors.white,
+                      size: 18,
+                    ),
+                    SizedBox(
+                      width: 10,
+                    ),
+                    Icon(
+                      Icons.thumb_down_alt_outlined,
+                      color: Colors.white,
+                      size: 18,
+                    ),
+                  ],
+                ),
               ],
             ),
           ),
