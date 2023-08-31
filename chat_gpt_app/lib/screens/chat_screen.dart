@@ -1,10 +1,10 @@
 import 'package:chat_gpt_app/constants/constant.dart';
 import 'package:chat_gpt_app/widgets/chat_widget.dart';
 import 'package:flutter/material.dart';
-
-import '../services/assets_manager.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 
+import '../services/services.dart';
+import '../services/assets_manager.dart';
 import '../widgets/text_widget.dart';
 
 class ChatScreen extends StatefulWidget {
@@ -44,30 +44,7 @@ class _ChatScreenState extends State<ChatScreen> {
         actions: [
           IconButton(
             onPressed: () async {
-              await showModalBottomSheet(
-                shape: const RoundedRectangleBorder(
-                  borderRadius: BorderRadius.vertical(
-                    top: Radius.circular(20),
-                  ),
-                ),
-                backgroundColor: scaffoldBackgroundColor,
-                context: context,
-                builder: (context) {
-                  return const Padding(
-                    padding: EdgeInsets.all(16.0),
-                    child: Row(
-                      children: [
-                        Flexible(
-                          child: TextWidget(
-                            label: "Choose Model :",
-                            fontSize: 15,
-                          ),
-                        ),
-                      ],
-                    ),
-                  );
-                },
-              );
+              await Services.showModalSheet(context: context);
             },
             icon: const Icon(Icons.more_vert_rounded),
             color: Colors.white,
