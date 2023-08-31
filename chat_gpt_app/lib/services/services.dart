@@ -1,3 +1,4 @@
+import 'package:chat_gpt_app/widgets/drop_down.dart';
 import 'package:flutter/material.dart';
 
 import '../constants/constant.dart';
@@ -24,6 +25,10 @@ class Services {
                             label: "Choose Model :",
                             fontSize: 15,
                           ),
+                        ),
+                        Flexible(
+                          flex: 2,
+                          child: ModelsDropDownWidget()
                         ),
                       ],
                     ),
