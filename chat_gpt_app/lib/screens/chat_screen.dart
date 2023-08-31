@@ -5,6 +5,8 @@ import 'package:flutter/material.dart';
 import '../services/assets_manager.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 
+import '../widgets/text_widget.dart';
+
 class ChatScreen extends StatefulWidget {
   const ChatScreen({super.key});
 
@@ -18,13 +20,13 @@ class _ChatScreenState extends State<ChatScreen> {
   late TextEditingController textEditingController;
 
   @override
-  void initState(){
+  void initState() {
     textEditingController = TextEditingController();
     super.initState();
   }
 
   @override
-  void dispose(){
+  void dispose() {
     textEditingController.dispose();
     super.dispose();
   }
@@ -41,7 +43,23 @@ class _ChatScreenState extends State<ChatScreen> {
         title: const Text("ChatGPT"),
         actions: [
           IconButton(
-            onPressed: () {},
+            onPressed: () async {
+              await showModalBottomSheet(
+                context: context,
+                builder: (context) {
+                  return const Row(
+                    children: [
+                      Flexible(
+                        child: TextWidget(
+                          label: "Choose Model",
+                          fontSize: 15,
+                        ),
+                      ),
+                    ],
+                  );
+                },
+              );
+            },
             icon: const Icon(Icons.more_vert_rounded),
             color: Colors.white,
           ),
@@ -60,15 +78,16 @@ class _ChatScreenState extends State<ChatScreen> {
                         chatMessages[index]["chatIndex"].toString(),
                       ),
                     );
-                  }
-                ),
+                  }),
             ),
             if (_isTyping) ...[
               const SpinKitThreeBounce(
                 color: Colors.white,
                 size: 18.0,
               ),
-              const SizedBox(height: 15,),
+              const SizedBox(
+                height: 15,
+              ),
               Material(
                 color: cardColor,
                 child: Row(
@@ -77,11 +96,9 @@ class _ChatScreenState extends State<ChatScreen> {
                       child: Padding(
                         padding: const EdgeInsets.all(8.0),
                         child: TextField(
-                          style: const TextStyle(
-                            color: Colors.white
-                          ),
+                          style: const TextStyle(color: Colors.white),
                           controller: textEditingController,
-                          onSubmitted: (value){
+                          onSubmitted: (value) {
                             // TODO send message
                           },
                           decoration: const InputDecoration.collapsed(
@@ -94,7 +111,7 @@ class _ChatScreenState extends State<ChatScreen> {
                       ),
                     ),
                     IconButton(
-                      onPressed: (){},
+                      onPressed: () {},
                       icon: const Icon(
                         Icons.send,
                         color: Colors.white,
