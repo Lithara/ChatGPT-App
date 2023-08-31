@@ -45,17 +45,26 @@ class _ChatScreenState extends State<ChatScreen> {
           IconButton(
             onPressed: () async {
               await showModalBottomSheet(
+                shape: const RoundedRectangleBorder(
+                  borderRadius: BorderRadius.vertical(
+                    top: Radius.circular(20),
+                  ),
+                ),
+                backgroundColor: scaffoldBackgroundColor,
                 context: context,
                 builder: (context) {
-                  return const Row(
-                    children: [
-                      Flexible(
-                        child: TextWidget(
-                          label: "Choose Model",
-                          fontSize: 15,
+                  return const Padding(
+                    padding: EdgeInsets.all(16.0),
+                    child: Row(
+                      children: [
+                        Flexible(
+                          child: TextWidget(
+                            label: "Choose Model :",
+                            fontSize: 15,
+                          ),
                         ),
-                      ),
-                    ],
+                      ],
+                    ),
                   );
                 },
               );
